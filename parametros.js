@@ -11,4 +11,19 @@ for (var i = 0; i < count; i++) {
   })
 }
 
-module.exports = data
+var _data = [
+  {
+    nome: 'Objeto',
+    valor: 'O presente parecer tem como objetivo a verificação da existência e o cadastramento das anomalias visíveis nas alvenarias, estruturas, revestimentos e nas instalações prediais do empreendimento.'
+  },
+  {
+    nome: 'Finalidade',
+    valor: 'A finalidade deste trabalho é efetuar a apresentação do estado físico da obra para elaboração dos procedimento técnicos de entrega e recebimento de obra.'
+  },
+  {
+    nome: 'Objetivo',
+    valor: 'Trata-se de Condomínio Logístico e Galpões Modulares, projetada e construída para locação para atender empresas de logísticas, e-commerce, varejo,indústrias.'
+  }
+]
+
+module.exports = _data

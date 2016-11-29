@@ -14,53 +14,135 @@ const gerar = function () {
     }
   })
 
-  doc.image('imagem/teste.jpg', {
-    height: 150
+  // width: 612, height: 792
+
+  doc.image('imagem/capa.jpg', 0, 0, {
+    width: 612,
+    height: 200
   })
-  doc.fontSize(18)
+
+  doc.lineWidth(35)
+  doc.lineCap('butt')
+    .moveTo(0, 185)
+    .lineTo(612, 185)
+    .stroke('gray')
+
+  doc.y = 177
+  doc.fontSize(20)
+    .fillColor('white')
     .text(informacoes.empreendimento)
 
-  doc.moveDown()
+  doc.font('Helvetica-Bold')
+  doc.moveDown(0.5)
     .fontSize(14)
+    .fillColor('black')
     .text('Informações')
 
   fullLine(doc)
-  doc.moveDown()
+  doc.moveDown(0.5)
   var x = doc.x
   var y = doc.y
 
-  doc.fontSize(10)
-    .text('Empreendimento: ' + informacoes.empreendimento, doc.x, doc.y, { align: 'left', width: 200 })
-  fullLine(doc)
-  doc.moveDown()
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Empreendimento', doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.empreendimento, doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    })
 
-  doc.text('Nome de Exibição: ' + informacoes.nomeDeExibicao, doc.x, doc.y, { align: 'left', width: 200 })
-  fullLine(doc)
-  doc.moveDown()
+  doc.moveDown(0.5)
 
-  doc.text('Área Construída: ' + informacoes.areaConstruida, doc.x, doc.y, { align: 'left', width: 200 })
-  fullLine(doc)
-  doc.moveDown()
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Nome de Exibição', doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.nomeDeExibicao, doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    })
 
-  doc.text('Área Privativa: ' + informacoes.areaPrivativa, doc.x, doc.y, { align: 'left', width: 200 })
-  fullLine(doc)
-  doc.moveDown()
+  doc.moveDown(0.5)
 
-  doc.text('Área Locável: ' + informacoes.areaLocavel, doc.x, doc.y, { align: 'left', width: 200 })
-  fullLine(doc)
-  doc.moveDown()
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Área Construída', doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.areaConstruida, doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    })
 
-  doc.text('Informações: ' + informacoes.informacoes, x + 200, y, { align: 'left', width: 400 })
+  doc.moveDown(0.5)
+
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Área Privativa', doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.areaPrivativa, doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    })
+
+  doc.moveDown(0.5)
+
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Área Locável', doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.areaLocavel, doc.x, doc.y, {
+      align: 'left',
+      width: 200
+    })
+
+  doc.moveDown(0.5)
+
+  doc.fontSize(9)
+    .fillColor('gray')
+    .text('Informações', x + 200, y, {
+      align: 'left',
+      width: 350
+    }).moveDown(0.4)
+  doc.fontSize(12)
+    .fillColor('black')
+    .text(informacoes.informacoes, x + 200, doc.y, {
+      align: 'justify',
+      width: 350,
+      height: 350
+    })
+
   doc.x = x
-  fullLine(doc)
-  doc.moveDown()
-
-  doc.y += 100
-  doc.moveDown()
+  if (doc.y < 430) {
+    doc.y = 430
+  } else {
+    doc.y += 10
+  }
+  doc.moveDown(0.5)
     .fontSize(14)
-    .text('Parâmetros')
+    .text('Informações Adicionais')
   fullLine(doc)
-  doc.moveDown()
+  doc.moveDown(0.5)
 
   parametros.forEach(p => {
     let x = doc.x
@@ -68,11 +150,11 @@ const gerar = function () {
     doc.fontSize(12)
       .text(p.nome, x, y, { align: 'left', width: 90 })
     doc.fontSize(10)
-      .text(p.valor, x + 110, y, { align: 'left', width: 440 })
+      .text(p.valor, x + 110, y, { align: 'justify', width: 440 })
     doc.x = x
-    doc.y += 10
+    doc.y += 5
     fullLine(doc)
-    doc.moveDown()
+    doc.moveDown(0.5)
   })
 
   doc.end()
